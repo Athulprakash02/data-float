@@ -1,13 +1,13 @@
 class HouseDataModel {
-  List<Data>? data;
+  List<HouseData>? data;
 
   HouseDataModel({this.data});
 
   HouseDataModel.fromJson(Map<String, dynamic> json) {
     if (json['data'] != null) {
-      data = <Data>[];
+      data = <HouseData>[];
       json['data'].forEach((v) {
-        data!.add(new Data.fromJson(v));
+        data!.add(new HouseData.fromJson(v));
       });
     }
   }
@@ -21,7 +21,7 @@ class HouseDataModel {
   }
 }
 
-class Data {
+class HouseData {
   String? pROPERTYRT;
   int? cMNCMNKEY;
   String? lISTAGENTNAME;
@@ -39,7 +39,7 @@ class Data {
   int? bATHSTOTAL;
   String? iDCFULLADDRESS;
 
-  Data(
+  HouseData(
       {this.pROPERTYRT,
       this.cMNCMNKEY,
       this.lISTAGENTNAME,
@@ -57,7 +57,7 @@ class Data {
       this.bATHSTOTAL,
       this.iDCFULLADDRESS});
 
-  Data.fromJson(Map<String, dynamic> json) {
+  HouseData.fromJson(Map<String, dynamic> json) {
     pROPERTYRT = json['PROPERTYRT'];
     cMNCMNKEY = json['CMNCMNKEY'];
     lISTAGENTNAME = json['LISTAGENTNAME'];
