@@ -138,7 +138,7 @@ class ListItemWidget extends StatelessWidget {
                       width: size.width * .3,
                       child: Text(
                         AppStrings.dollar +
-                            AppStrings.space +
+                            
                             houseItem.iDCLISTPRICE!.toString(),
                         style: TextStyle(
                           fontSize: 20,
