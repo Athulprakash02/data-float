@@ -23,7 +23,7 @@ class DetailsScreen extends StatelessWidget {
             onTap: () => Get.back(),
             child: CircleAvatar(
               backgroundColor: AppColors.secondary,
-              child: Icon(Icons.arrow_back),
+              child: Icon(Icons.arrow_back, color: AppColors.primaryColor),
             ),
           ),
         ),
@@ -38,6 +38,10 @@ class DetailsScreen extends StatelessWidget {
               AppStrings.mlsNumber +
                   AppStrings.space +
                   detailsController.houseDetails.value.iDCMLSNUMBER!,
+              style: TextStyle(
+                color: AppColors.primaryColor,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
         ),
@@ -46,7 +50,7 @@ class DetailsScreen extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: CircleAvatar(
               backgroundColor: AppColors.secondary,
-              child: Icon(Icons.share),
+              child: Icon(Icons.share, color: AppColors.primaryColor),
             ),
           ),
         ],
@@ -64,7 +68,6 @@ class DetailsScreen extends StatelessWidget {
                     color: AppColors.primaryColor.withOpacity(.4),
                     height: size.height * .4,
                     child: PhotoViewGallery.builder(
-                      
                       scrollPhysics: const BouncingScrollPhysics(),
                       builder: (BuildContext context, int index) {
                         return PhotoViewGalleryPageOptions(
@@ -138,7 +141,7 @@ class DetailsScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.all(
                                   Radius.circular(5),
                                 ),
-                                color: AppColors.primaryColor.withOpacity(.5),
+                                color: AppColors.primaryColor.withOpacity(.4),
                               ),
                               child: Center(
                                 child: Text(
@@ -149,6 +152,7 @@ class DetailsScreen extends StatelessWidget {
                                       .toString(),
                                   style: TextStyle(
                                     fontSize: 18,
+                                    color: AppColors.primaryColor,
                                     fontWeight: FontWeight.bold,
                                   ),
                                 ),

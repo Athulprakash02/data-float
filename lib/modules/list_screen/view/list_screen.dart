@@ -32,7 +32,7 @@ class ListScreen extends StatelessWidget {
 
         title: Obx(
           () => !listCotroller.isSearching.value
-              ? Text(AppStrings.listings)
+              ? Text(AppStrings.listings,style: TextStyle(fontWeight: FontWeight.bold),)
               : TextField(
                   decoration: InputDecoration(
                     hintText: 'Search...',
@@ -150,13 +150,14 @@ class ListItemWidget extends StatelessWidget {
                       width: size.width * .3,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.all(Radius.circular(5)),
-                        color: AppColors.primaryColor.withOpacity(.5),
+                        color: AppColors.primaryColor.withOpacity(.4),
                       ),
                       child: Center(
                         child: Text(
                           houseItem.iDCSTATUS!.toString(),
                           style: TextStyle(
                             fontSize: 18,
+                            color: AppColors.primaryColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
