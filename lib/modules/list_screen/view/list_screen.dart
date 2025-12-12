@@ -71,7 +71,9 @@ class ListScreen extends StatelessWidget {
             child: ListView.separated(
               itemBuilder: (context, index) => GestureDetector(
                 onTap: () =>
-                    Get.toNamed(AppRoutes.detailsScreen, arguments: index),
+                    Get.toNamed(AppRoutes.detailsScreen, arguments: listCotroller.isSearching.value
+                      ? listCotroller.searchedHouseList[index]
+                      : listCotroller.houseList[index]),
                 child: ListItemWidget(
                   houseItem: listCotroller.isSearching.value
                       ? listCotroller.searchedHouseList[index]
@@ -198,9 +200,10 @@ class ListItemWidget extends StatelessWidget {
 }
 
 class IconDataWidget extends StatelessWidget {
-  const IconDataWidget({super.key, required this.iconData, required this.text});
+   IconDataWidget({super.key, required this.iconData, required this.text,this.color = Colors.black,});
   final IconData iconData;
   final String text;
+  Color color;
 
   @override
   Widget build(BuildContext context) {
@@ -212,7 +215,7 @@ class IconDataWidget extends StatelessWidget {
         children: [
           Icon(iconData, size: 20, color: AppColors.primaryColor),
           SizedBox(width: 3),
-          Text(text, style: TextStyle(fontSize: 18)),
+          Text(text, style: TextStyle(fontSize: 18,color: color)),
         ],
       ),
     );
