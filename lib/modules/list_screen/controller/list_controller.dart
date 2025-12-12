@@ -39,12 +39,11 @@ class ListController extends GetxController {
     final query = (rawQuery ?? '').trim();
 
     if (query.isEmpty) {
-      // reset to full list
+      
       searchedHouseList.value = List<HouseData>.from(houseList);
       return;
     }
 
-    // split into words and remove empty tokens
     final words = query
         .toLowerCase()
         .split(RegExp(r'\s+'))
