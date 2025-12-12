@@ -17,8 +17,52 @@ class ListScreen extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: AppColors.primaryColor,
         foregroundColor: AppColors.secondary,
-        title: Text(AppStrings.listings),
-        actions: [IconButton(onPressed: () {}, icon: const Icon(Icons.search))],
+        leading: Obx(
+          () => Visibility(
+            visible: listCotroller.isSearching.value,
+            child: IconButton(
+              onPressed: () {
+                listCotroller.isSearching.value = false;
+                  listCotroller.searchedHouseList.value = listCotroller.houseList;
+              },
+              icon: Icon(Icons.arrow_back),
+            ),
+          ),
+        ),
+
+        title: Obx(
+          () => !listCotroller.isSearching.value
+              ? Text(AppStrings.listings)
+              : TextField(
+                  decoration: InputDecoration(
+                    hintText: 'Search...',
+                    prefixIcon: Icon(Icons.search),
+                    filled: true,
+                    fillColor: AppColors.secondary.withOpacity(.7),
+                    contentPadding: EdgeInsets.symmetric(vertical: 12),
+
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(12),
+                      borderSide: BorderSide.none,
+                    ),
+                  ),
+                  onChanged: (value) {
+                    listCotroller.searchByAddress(value);
+                  },
+                ),
+        ),
+        actions: [
+         Obx(() =>  Visibility(
+            visible: !listCotroller.isSearching.value,
+            child: IconButton(
+              onPressed: () {
+                listCotroller.isSearching.value = true;
+              
+              },
+              icon: const Icon(Icons.search),
+            ),
+          ),)
+        ],
       ),
       body: SafeArea(
         child: Obx(
@@ -26,14 +70,19 @@ class ListScreen extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: ListView.separated(
               itemBuilder: (context, index) => GestureDetector(
-                onTap: () => Get.toNamed(AppRoutes.detailsScreen, arguments: index),
+                onTap: () =>
+                    Get.toNamed(AppRoutes.detailsScreen, arguments: index),
                 child: ListItemWidget(
-                  houseItem: listCotroller.houseList[index],
+                  houseItem: listCotroller.isSearching.value
+                      ? listCotroller.searchedHouseList[index]
+                      : listCotroller.houseList[index],
                   size: size,
                 ),
               ),
               separatorBuilder: (context, index) => Divider(),
-              itemCount: listCotroller.houseList.length,
+              itemCount: listCotroller.isSearching.value
+                  ? listCotroller.searchedHouseList.length
+                  : listCotroller.houseList.length,
             ),
           ),
         ),
