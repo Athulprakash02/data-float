@@ -66,7 +66,7 @@ class ListScreen extends StatelessWidget {
       ),
       body: SafeArea(
         child: Obx(
-          () => Padding(
+          () =>listCotroller.isLoading.value ? Center(child: CircularProgressIndicator(),) : Padding(
             padding: const EdgeInsets.all(16),
             child: ListView.separated(
               itemBuilder: (context, index) => GestureDetector(
