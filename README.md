@@ -1,17 +1,15 @@
 # datafloat_test
 
-Model Structure & JSON Parsing (Simple Explanation)
+Model Structure & JSON Parsing
 
-The models in this project (HouseDataModel and HouseData) were generated automatically using an online JSON-to-Dart tool.
+The models in this project were generated automatically using an online JSON-to-Dart tool.
 The tool created:
 
  * Proper field mappings based on JSON keys.
-
  * An auto-generated fromJson(Map<String, dynamic>) method.
-
  * An auto-generated toJson() method.
 
-Chosen State Management & Reasoning
+Chosen State Management
 
 This project uses GetX for state management because it is lightweight, fast, and easy to use.
 GetX lets the app update UI automatically using reactive variables (Obx).
