@@ -1,4 +1,5 @@
 import 'dart:convert';
+import 'dart:developer';
 
 import 'package:datafloat_test/data/models/house_data_model.dart';
 import 'package:get/get.dart';
@@ -22,6 +23,7 @@ class ListController extends GetxController {
 
     final houseDataModel = HouseDataModel.fromJson(data);
     houseList.value = houseDataModel.data!;
+    log(houseList.length.toString());
     isLoading.value = false;
   }
 }

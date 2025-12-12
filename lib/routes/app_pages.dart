@@ -9,7 +9,7 @@ import 'app_routes.dart';
 class AppPages {
   static var pages = [
     GetPage(
-      name: AppRoutes.details,
+      name: AppRoutes.detailsScreen,
       page: () => DetailsScreen(),
       transition: Transition.rightToLeftWithFade,
       binding: DetailsBinding(),
